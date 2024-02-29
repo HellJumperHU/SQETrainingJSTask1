@@ -5,7 +5,7 @@ I set this project with the followings
 
 
 
-? A project named "webdriverchromeandfirefox" was detected at "C:\Projects\WKDE\SQE\MenteeTraining\WebdriverChromeAndFirefox", correct? Yes
+? A project named "webdriverchromeandfirefox" was detected at ".....path....", correct? Yes
 
 ? What type of testing would you like to do? E2E Testing - of Web or Mobile Applications
 
