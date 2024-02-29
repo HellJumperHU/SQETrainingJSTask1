@@ -6,7 +6,7 @@ wdio (WebdriverIO) installation tutorial
 https://webdriver.io/docs/gettingstarted/
 
 I set this project with the followings
-- Project name .... (YES)
+- Project name .... (Pressed Enter)
 - Test launch (Local for E2E....)
 - Automation backend (Local machine)
 - Framework (Mocha -> mochajs.org)
