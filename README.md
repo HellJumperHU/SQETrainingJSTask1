@@ -22,5 +22,5 @@ I set this project with the followings
 - NPM install (YES)
 
 Once everything is done.
-- Copy-paste the files again into the directory or use the git pull.
-- In terminal execute the "npm run wdio" command and everything should work
+1. Copy-paste the files again into the directory or use the git pull.
+2. In terminal execute the "npm run wdio" command and everything should work
