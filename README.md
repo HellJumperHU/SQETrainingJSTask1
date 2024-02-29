@@ -4,6 +4,7 @@ npm init wdio .
 
 wdio (WebdriverIO) installation tutorial
 https://webdriver.io/docs/gettingstarted/
+
 I set this project with the followings
 - Project name .... (YES)
 - Test launch (Local for E2E....)
