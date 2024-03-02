@@ -1,4 +1,4 @@
-? A project named "webdriverchromeandfirefox" was detected at "C:\Projects\WKDE\SQE\MenteeTraining\WebdriverChromeAndFirefox", correct? Yes
+? A project named "webdriverchromeandfirefox" was detected at "...path...", correct? Yes
 
 ? What type of testing would you like to do? E2E Testing - of Web or Mobile Applications
 
@@ -14,13 +14,13 @@
 
 ? Do you want WebdriverIO to autogenerate some test files? Yes
 
-? What should be the location of your feature files? C:\Projects\WKDE\SQE\MenteeTraining\WebdriverChromeAndFirefox\features\**\*.feature
+? What should be the location of your feature files? ...path...\features\**\*.feature
 
-? What should be the location of your step definitions? C:\Projects\WKDE\SQE\MenteeTraining\WebdriverChromeAndFirefox\features\step-definitions\steps.js
+? What should be the location of your step definitions? ...path...\features\step-definitions\steps.js
 
 ? Do you want to use page objects (https://martinfowler.com/bliki/PageObject.html)? Yes
 
-? Where are your page objects located? C:\Projects\WKDE\SQE\MenteeTraining\WebdriverChromeAndFirefox\features\pageobjects\**\*.js
+? Where are your page objects located? ...path...\features\pageobjects\**\*.js
 
 ? Which reporter do you want to use? spec
 
