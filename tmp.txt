@@ -73,3 +73,14 @@ Feature: The Internet Guinea Pig Website
       | n | orderType | order1                 | order2                 |
       | 1 | abc       | A-Z                    | Z-A                    |
       | 2 | price     | MostExpensive-Cheapest | Cheapest-MostExpensive |
+
+        Scenario Outline: 6. As a User I should be able to change the number of displayed items
+    Given I am on the "Cloth" page
+    When I select the "1" option of the item amount dropdown
+    Then then up to "4" "Product items" should be displayed
+
+    When I select the "2" option of the item amount dropdown
+    Then then up to "8" "Product items" should be displayed
+
+    When I select the "3" option of the item amount dropdown
+    Then then up to "12" "Product items" should be displayed

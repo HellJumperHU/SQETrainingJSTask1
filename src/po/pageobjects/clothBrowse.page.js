@@ -1,12 +1,12 @@
 const { $ } = require('@wdio/globals')
 const Page = require('./page');
 
-class ClothBrowsePage extends Page{
+class ClothBrowsePage extends Page {
     get pageURL() {
         return "https://demowebshop.tricentis.com/apparel-shoes";
     };
 
-    open () {
+    open() {
         return super.open('apparel-shoes');
     }
 }

@@ -13,6 +13,8 @@ const HeaderElement = require('../po/common/header.common');
 const ProductCategory = require('../po/common/productCategories.common')
 const DesktopBrowsePage = require('../po/pageobjects/desktopBrowse.page');
 const ProductCommon = require('../po/common/product.common');
+const ProductDetailPage = require('../po/common/productDetail.common');
+const headerCommon = require('../po/common/header.common');
 
 const pages = {
     login: LoginPage
@@ -23,11 +25,15 @@ When('I click on the {string}', async (clickedEelement) => {
         case "Login link":
             return await HeaderElement.headerLogin.click();
         case "Login button":
-            return (await LoginPage.buttonLogin).click();
+            return await LoginPage.buttonLogin.click();
         case "Logout button":
-            return (await HeaderElement.headerLogOut).click();
+            return await HeaderElement.headerLogOut.click();
         case "Computers category":
-            return ((await ProductCategory.sideMenuComputers)).click();
+            return await ProductCategory.sideMenuComputers.click();
+        case "Wishlist button":
+            return await ProductDetailPage.productAddToWishlist.click();
+        case "Wishlist link":
+            return await headerCommon.headerWishlist.click();
         default:
             throw Error("No such action step for click");
     };
@@ -48,4 +54,15 @@ When("the {string} item name is saved as {string}", async (nthElement, nth) => {
 
 When("the sorting is changed to {string}", async (sorting) => {
     await ProductCommon.changeSort(sorting);
+})
+
+When("I select the {string} option of the item amount dropdown", async (element) => {
+    await ProductCommon.changeAmountOfVisibleItems(element);
+})
+
+When("I click on the {string} of {string}", async (nth, element) => {
+    switch (element) {
+        case "Product tile":
+            await ProductDetailPage.openProductDetail(nth);
+    }
 })

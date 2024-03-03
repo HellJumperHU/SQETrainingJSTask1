@@ -18,7 +18,12 @@ class Products {
             this.#productName02 = value;
         };
     */
-
+    get allProduct() {
+        return $$('div.product-grid div.item-box');
+    }
+    get allProductNames(){
+        return $$('div.product-grid div.item-box h2 a');
+    }
     get dropdownSort() {
         return $('#products-orderby');
     };
@@ -31,10 +36,10 @@ class Products {
     get textSort() {
         return $('div.product-sorting span');
     };
-    get textBeforePageNumber() {
+    get textBeforeProductNumber() {
         return $('div.product-page-size span:nth-child(1)');
     };
-    get textAfterPageNumber() {
+    get textAfterProductNumber() {
         return $('div.product-page-size span:nth-child(3)');
     };
     get textViewMode() {
@@ -73,5 +78,26 @@ class Products {
         await elementToClick.click();
         await browser.pause(1000);
     }
+    /*
+    async changeAmountOfVisibleItems(amount) {
+            const subnodes = $$('#products-pagesize option')
+            subnodes.forEach((option), async() => {
+                const text= await option.getText();
+                await option.click();
+                const amountOfDisplayedProduct = await $$('div.product-grid div.item-box');
+                expect(amountOfDisplayedProduct.length).toEqual(text);
+            })
+        }
+    */
+    async changeAmountOfVisibleItems(element) {
+        const subnode = $('#products-pagesize option:nth-child('+element+')');
+        const text = await subnode.getText();
+        await subnode.click();
+    }
+    async visibleProductAmount(amount){
+        const amountOfDisplayedProduct = await $$('div.product-grid div.item-box');
+        expect(amountOfDisplayedProduct.length).toBeLessThanOrEqual(parseInt(amount,10));
+    }
+
 }
 module.exports = new Products();

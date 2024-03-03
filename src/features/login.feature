@@ -20,22 +20,26 @@ Feature: The Internet Guinea Pig Website
   ##  When I click on the "Logout button"
   ##  Then the "Main" page should be displayed
   ##  And the "Header login link" should be visible
-  @freeUpProductVariable
-  Scenario Outline: 5<n>Scenario Outline name: 5a As a user I should be able to change the sorting of the listed items based on <orderType>
-    Given I am on the "Desktop" page
-    When the sorting is changed to "<order1>"
-    And the "1" item name is saved as "0"
-    And the "6" item name is saved as "1"
 
-    When the sorting is changed to "<order2>"
-    Then the "1" item name should be "1"
-    And the "6" item name should be "0"
+  Scenario: 7. As a user I should be able to add items to the wishlist
+    Given I am on the "Cloth" page
+    When I click on the "1" of "Product tile"
+    Then the "Product detail" page should be displayed
+    And the "Product container" should be visible
+    And the "Product Image" should be visible
+    And the "Product overview container" should be visible
+    And the "Product name" should be visible
+    And the "Product stock" should be visible
+    And the "Product attributes" should be visible
+    And the "Product price" should be visible
+    And the "Add to cart button" should be visible
+    And the "Wishlist button" should be visible
 
-    When the sorting is changed to "<order1>"
-    Then the "1" item name should be "0"
-    And the "6" item name should be "1"
+    When I click on the "Wishlist button"
+    Then the number of "wishlisted" product in the "wishlist" link should be "more than" 0
+    And the "Notification meessage" should be visible
 
-    Examples:
-      | n | orderType | order1                 | order2                 |
-      | 1 | abc       | A-Z                    | Z-A                    |
-      | 2 | price     | MostExpensive-Cheapest | Cheapest-MostExpensive |
+    When I click on the "Wishlist link"
+    Then the "Wishlist" page should be displayed
+    And the number of "wishlisted" product on the "wishlist" page should be "more than" 0
+    And the number of "wishlisted" product in the "wishlist" link should be "more than" 0
