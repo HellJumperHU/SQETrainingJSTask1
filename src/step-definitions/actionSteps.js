@@ -34,6 +34,15 @@ When('I click on the {string}', async (clickedEelement) => {
             return await ProductDetailPage.productAddToWishlist.click();
         case "Wishlist link":
             return await headerCommon.headerWishlist.click();
+        case "Add to cart button":
+            return await ProductDetailPage.productAddToCart.click();
+        case "Cart link":
+            return await headerCommon.headerShoppingCart.click();
+        case "Cart item checkbox":
+            return await CartPage.checkbox.click();
+        case "Cart item update button":
+            return await CartPage.buttonUpdate.click();
+
         default:
             throw Error("No such action step for click");
     };

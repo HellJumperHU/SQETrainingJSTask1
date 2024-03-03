@@ -14,12 +14,16 @@ const DesktopBrowsePage = require('../po/pageobjects/desktopBrowse.page');
 const ProductCommon = require('../po/common/product.common');
 const ComputerBrowsePage = require('../po/pageobjects/computerBrowse.page');
 const ProductDetailPage = require('../po/common/productDetail.common');
+const WishlistPage = require('../po/pageobjects/wishlist.page');
+const headerCommon = require('../po/common/header.common');
 
 const pages = {
     Login: LoginPage,
     Main: MainPage,
     Computers: ComputerBrowsePage,
-    Desktop: DesktopBrowsePage
+    Desktop: DesktopBrowsePage,
+    Wishlist: WishlistPage,
+    Cart: CartPage
 }
 
 Then("the {string} page should be displayed", async (page) => {
@@ -81,6 +85,10 @@ Then("the {string} should be visible", async (element) => {
             return expect(ProductDetailPage.productAddToCart).toBeDisplayed();
         case "Wishlist button":
             return expect(ProductDetailPage.productAddToWishlist).toBeDisplayed();
+        case "Cart item checkbox":
+            return expect(CartPage.checkbox).toBeDisplayed();
+        case "Cart item update button":
+            return expect(CartPage.buttonUpdate).toBeDisplayed();
         default:
             throw Error("No such visibility check");
     }
@@ -121,5 +129,34 @@ Then("then up to {string} {string} should be displayed", async (amount, type) =>
     switch (type) {
         case "Product items":
             ProductCommon.visibleProductAmount(amount);
+    }
+})
+
+Then("the number of {string} product on the page should be {string} {string}", async (itemType, page, condition) => {
+    let productAmount;
+    switch (itemType) {
+        case "Wishlisted":
+            productAmount = WishlistPage.numberOfProducts();
+            break;
+        case "Cart":
+            productAmount = CartPage.numberOfProducts();
+            break;
+        default:
+            throw Error("No such item type on the PAGE");
+    }
+    switch (condition) {
+        case "More than":
+            return expect(productAmount).toBeGreaterThanOrEqual(parseInt(number, 10));
+        case "Exactly":
+            return expect(productAmount).toEqual(parseInt(number, 10));
+    }
+})
+
+Then("the number of {string} product in the link should be {string} {string}", async (itemType, condition, number) => {
+    let productAmount;
+    productAmount = await headerCommon.indicatorNumberOf(itemType);
+    switch (condition) {
+        case "More than":
+            return expect(productAmount).toBeGreaterThanOrEqual(parseInt(number, 10));
     }
 })

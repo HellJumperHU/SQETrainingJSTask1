@@ -2,7 +2,7 @@ const { $ } = require('@wdio/globals')
 const Page = require('./page');
 
 class WishlistPage extends Page{
-    get pageUrl(){
+    get pageURL(){
         return "https://demowebshop.tricentis.com/wishlist";
     };
     get listItems(){

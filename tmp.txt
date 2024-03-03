@@ -84,3 +84,76 @@ Feature: The Internet Guinea Pig Website
 
     When I select the "3" option of the item amount dropdown
     Then then up to "12" "Product items" should be displayed
+
+  Scenario: 7. As a user I should be able to add items to the wishlist
+    Given I am on the "Cloth" page
+    When I click on the "1" of "Product tile"
+    Then the "Product detail" page should be displayed
+    And the "Product container" should be visible
+    And the "Product Image" should be visible
+    And the "Product overview container" should be visible
+    And the "Product name" should be visible
+    And the "Product stock" should be visible
+    And the "Product attributes" should be visible
+    And the "Product price" should be visible
+    And the "Add to cart button" should be visible
+    And the "Wishlist button" should be visible
+
+    When I click on the "Wishlist button"
+    Then the number of "Wishlisted" product in the link should be "More than" "0"
+
+    When I click on the "Wishlist link"
+    Then the "Wishlist" page should be displayed
+    And the number of "Wishlisted" product on the page should be "More than" "0"
+    And the number of "Wishlisted" product in the link should be "More than" "0"
+
+  Scenario: 8. As a user I should be able to add items to the cart
+    Given I am on the "Cloth" page
+    When I click on the "1" of "Product tile"
+    Then the "Product detail" page should be displayed
+    And the "Product container" should be visible
+    And the "Product Image" should be visible
+    And the "Product overview container" should be visible
+    And the "Product name" should be visible
+    And the "Product stock" should be visible
+    And the "Product attributes" should be visible
+    And the "Product price" should be visible
+    And the "Add to cart button" should be visible
+    And the "Wishlist button" should be visible
+
+    When I click on the "Add to cart button"
+    Then the number of "Cart" product in the link should be "More than" "0"
+
+    When I click on the "Cart link"
+    Then the "Cart" page should be displayed
+    And the number of "Cart" product on the page should be "More than" "0"
+    And the number of "Cart" product in the link should be "More than" "0"
+
+  Scenario: 9. As a user I should be able to remove items from the cart
+    Given I am on the "Cloth" page
+    When I click on the "1" of "Product tile"
+    Then the "Product detail" page should be displayed
+    And the "Product container" should be visible
+    And the "Product Image" should be visible
+    And the "Product overview container" should be visible
+    And the "Product name" should be visible
+    And the "Product stock" should be visible
+    And the "Product attributes" should be visible
+    And the "Product price" should be visible
+    And the "Add to cart button" should be visible
+    And the "Wishlist button" should be visible
+
+    When I click on the "Add to cart button"
+    Then the number of "Cart" product in the link should be "More than" "0"
+
+    When I click on the "Cart link"
+    Then the "Cart" page should be displayed
+    And the number of "Cart" product on the page should be "More than" "0"
+    And the number of "Cart" product in the link should be "More than" "0"
+    And the "Cart item checkbox" should be visible
+    And the "Cart item update button" should be visible
+
+    When I click on the "Cart item checkbox"
+    And I click on the "Cart item update button"
+    Then the number of "Cart" product on the page should be "Exactly" "0"
+    And the number of "Cart" product in the link should be "Exactly" "0"
