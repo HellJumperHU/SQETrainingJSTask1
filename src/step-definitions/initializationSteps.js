@@ -11,9 +11,12 @@ const RegistrationPage = require('../po/pageobjects/registration.page');
 const RregistrationSuccessPage = require('../po/pageobjects/registrationSuccess.page');
 const HeaderElement = require('../po/common/header.common');
 const ProductCategories = require('../po/common/productCategories.common')
+const DesktopBrowsePage = require('../po/pageobjects/desktopBrowse.page');
 
 const pages = {
     Main: MainPage,
+    Desktop: DesktopBrowsePage,
+    Computers: ComputerBrowsePage
 }
 
 Given('I am on the {string} page', async (page) => {

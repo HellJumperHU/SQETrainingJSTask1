@@ -1,15 +1,13 @@
 const { $ } = require('@wdio/globals')
 const Page = require('./page');
 
-class ComputerBrowsePage extends Page{
-    nthItem1=null;
-    nthItem2 =null;
+class DesktopBrowsePage extends Page{
     get pageURL() {
-        return "https://demowebshop.tricentis.com/computers";
+        return "https://demowebshop.tricentis.com/desktops";
     };
     open () {
-        return super.open('computers');
+        return super.open('desktops');
     }
 }
 
-module.exports = new ComputerBrowsePage();
+module.exports = new DesktopBrowsePage();

@@ -11,6 +11,8 @@ const RegistrationPage = require('../po/pageobjects/registration.page');
 const RregistrationSuccessPage = require('../po/pageobjects/registrationSuccess.page');
 const HeaderElement = require('../po/common/header.common');
 const ProductCategory = require('../po/common/productCategories.common')
+const DesktopBrowsePage = require('../po/pageobjects/desktopBrowse.page');
+const ProductCommon = require('../po/common/product.common');
 
 const pages = {
     login: LoginPage
@@ -39,3 +41,11 @@ When('I fill the {string} inputfield with {string}', async (string1, string2) =>
             await LoginPage.inputPassword.setValue(string2);
     }
 });
+
+When("the {string} item name is saved as {string}", async (nthElement, nth) => {
+    await ProductCommon.saveValue(nthElement, nth);
+})
+
+When("the sorting is changed to {string}", async (sorting) => {
+    await ProductCommon.changeSort(sorting);
+})

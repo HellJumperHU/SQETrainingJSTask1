@@ -11,12 +11,15 @@ const RegistrationPage = require('../po/pageobjects/registration.page');
 const RregistrationSuccessPage = require('../po/pageobjects/registrationSuccess.page');
 const HeaderElement = require('../po/common/header.common');
 const ProductCategories = require('../po/common/productCategories.common');
+const DesktopBrowsePage = require('../po/pageobjects/desktopBrowse.page');
+const ProductCommon = require('../po/common/product.common');
 const computerBrowsePage = require('../po/pageobjects/computerBrowse.page');
 
 const pages = {
     Login: LoginPage,
     Main: MainPage,
-    Computers: ComputerBrowsePage
+    Computers: ComputerBrowsePage,
+    Desktop: DesktopBrowsePage
 }
 
 Then("the {string} page should be displayed", async (page) => {
@@ -93,9 +96,17 @@ Then("the {string} element should have {string} sub-elements", async (element, c
 Then("the {string} sub-element of {string} should be {string}", async (nthElement, element, text) => {
     switch (element) {
         case "Computers category":
-            computerBrowsePage.childTextComparison(nthElement,text);
+            computerBrowsePage.childTextComparison(nthElement, text);
     }
 });
 
-Then(/^the (\w+) sub-element should be (\w+)$/, async () => {
-});
+Then("the {string} item name should be {string}", async (element,nthElement) => {
+    const tmpelement= await $('div.product-grid div.item-box:nth-child('+element+') h2 a') ;
+    const tmpText =await tmpelement.getText();
+        if (nthElement=="1"){
+            return expect(tmpText).toEqual(ProductCommon.productName02);
+        }
+        else{
+            return expect(tmpText).toEqual(ProductCommon.productName01);
+        }
+    })
