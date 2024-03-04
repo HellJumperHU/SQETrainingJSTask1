@@ -273,14 +273,14 @@ Then("the {string} item name should be {string}", async (element, nthElement) =>
 Then("then up to {string} {string} should be displayed", async (amount, type) => {
     switch (type) {
         case "Product items":
-            ProductCommon.visibleProductAmount(amount);
+            await ProductCommon.visibleProductAmount(amount);
             break;
         default:
             throw Error("No such item type found for validate how much of it are displayed");
     }
 })
 
-Then("the number of {string} product on the page should be {string} {string}", async (itemType, page, condition) => {
+Then("the number of {string} product on the page should be {string} {string}", async (itemType, condition,number) => {
     let productAmount;
     switch (itemType) {
         case "Wishlisted":
@@ -294,11 +294,11 @@ Then("the number of {string} product on the page should be {string} {string}", a
     }
     switch (condition) {
         case "More than":
-            return expect(productAmount).toBeGreaterThanOrEqual(parseInt(number, 10));
+            return expect((await productAmount).length).toBeGreaterThanOrEqual(parseInt(number, 10));
         case "Exactly":
-            return expect(productAmount).toEqual(parseInt(number, 10));
-        //default:
-        // throw Error("No such condition found for validate the value of the compared items");
+            return expect((await productAmount).length).toEqual(parseInt(number, 10));
+        default:
+            throw Error("No such condition found for validate the value of the compared items");
     }
 })
 
@@ -308,6 +308,8 @@ Then("the number of {string} product in the link should be {string} {string}", a
     switch (condition) {
         case "More than":
             return expect(productAmount).toBeGreaterThanOrEqual(parseInt(number, 10));
+        case "Exactly":
+            return expect(productAmount).toEqual(parseInt(number, 10));
         default:
             throw Error("No such item type found for validate its multiplicity");
     }
