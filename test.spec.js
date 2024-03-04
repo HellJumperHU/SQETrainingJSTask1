@@ -1,9 +1,6 @@
 const axios = require("axios");
-const { expect } = require("chai");
 
 describe("API test suite", () => {
-
-
     it("GET post/1", async () => {
         const response = await axios({
             url: "https://jsonplaceholder.typicode.com/posts/1",
@@ -28,4 +25,6 @@ describe("API test suite", () => {
         });
         expect(response.status).to.equal(201);
     });
+
+
 });
