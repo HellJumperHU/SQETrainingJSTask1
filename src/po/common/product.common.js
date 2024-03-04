@@ -91,7 +91,6 @@ class Products {
     */
     async changeAmountOfVisibleItems(element) {
         const subnode = $('#products-pagesize option:nth-child('+element+')');
-        const text = await subnode.getText();
         await subnode.click();
     }
     async visibleProductAmount(amount){

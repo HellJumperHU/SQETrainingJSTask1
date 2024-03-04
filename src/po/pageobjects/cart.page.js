@@ -18,7 +18,10 @@ class CartPage extends Page{
         return $('div.common-buttons .update-cart-button');
     }
     get checkboxConfirm(){
-        return ('div.terms-of-service #termsofservice');
+        return $('div.terms-of-service input#termsofservice');
+    }
+    get buttonCheckOut(){
+        return $('button#checkout');
     }
     async numberOfProducts(){
         const itemNumber = await $$('tbody tr.cart-item-row');

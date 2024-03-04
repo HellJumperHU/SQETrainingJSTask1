@@ -16,6 +16,8 @@ const ComputerBrowsePage = require('../po/pageobjects/computerBrowse.page');
 const ProductDetailPage = require('../po/common/productDetail.common');
 const WishlistPage = require('../po/pageobjects/wishlist.page');
 const headerCommon = require('../po/common/header.common');
+const CheckOutPage = require('../po/pageobjects/checkout.page')
+const CheckOutSuccess = require('../po/pageobjects/checkoutCompleted.page')
 
 const pages = {
     Login: LoginPage,
@@ -23,7 +25,9 @@ const pages = {
     Computers: ComputerBrowsePage,
     Desktop: DesktopBrowsePage,
     Wishlist: WishlistPage,
-    Cart: CartPage
+    Cart: CartPage,
+    Checkout: CheckoutPage,
+    CheckOutSuccess: CheckOutSuccess
 }
 
 Then("the {string} page should be displayed", async (page) => {
@@ -89,8 +93,110 @@ Then("the {string} should be visible", async (element) => {
             return expect(CartPage.checkbox).toBeDisplayed();
         case "Cart item update button":
             return expect(CartPage.buttonUpdate).toBeDisplayed();
+        case "First name label":
+            return expect(CheckOutPage.labelFirstName).toBeDisplayed();
+        case "Last name label":
+            return expect(CheckOutPage.labelLastName).toBeDisplayed();
+        case "Email label":
+            return expect(CheckOutPage.labelEmail).toBeDisplayed();
+        case "Company label":
+            return expect(CheckOutPage.labelCompany).toBeDisplayed();
+        case "Country dropdown label":
+            return expect(CheckOutPage.labelCountryDropdown).toBeDisplayed();
+        case "State dropdown":
+            return expect(CheckOutPage.labelStateDropdown).toBeDisplayed();
+        case "City label":
+            return expect(CheckOutPage.labelCity).toBeDisplayed();
+        case "Address 1 label":
+            return expect(CheckOutPage.labelAddress1).toBeDisplayed();
+        case "Address 2 label":
+            return expect(CheckOutPage.labelAddress2).toBeDisplayed();
+        case "Zip label":
+            return expect(CheckOutPage.labelZip).toBeDisplayed();
+        case "Phone number label":
+            return expect(CheckOutPage.labelPhoneNumber).toBeDisplayed();
+        case "Fax label":
+            return expect(CheckOutPage.labelFax).toBeDisplayed();
+        case "First name input":
+            return expect(CheckOutPage.InputFirstName).toBeDisplayed();
+        case "Last name input":
+            return expect(CheckOutPage.InputLastName).toBeDisplayed();
+        case "Email input":
+            return expect(CheckOutPage.InputEmail).toBeDisplayed();
+        case "Company input":
+            return expect(CheckOutPage.InputCompany).toBeDisplayed();
+        case "Country dropdown":
+            return expect(CheckOutPage.DropdownCountry).toBeDisplayed();
+        case "State dropdown":
+            return expect(CheckOutPage.DropdownState).toBeDisplayed();
+        case "City input":
+            return expect(CheckOutPage.InputCity).toBeDisplayed();
+        case "Address 1 input":
+            return expect(CheckOutPage.InputAddr1).toBeDisplayed();
+        case "Address 2 input":
+            return expect(CheckOutPage.InputAddr2).toBeDisplayed();
+        case "Zip input":
+            return expect(CheckOutPage.InputZip).toBeDisplayed();
+        case "Phone number input":
+            return expect(CheckOutPage.InputPhone).toBeDisplayed();
+        case "Fax input":
+            return expect(CheckOutPage.InputFax).toBeDisplayed();
+        case "Checkout continue button1":
+            return expect(CheckOutPage.buttonContinue1).toBeDisplayed();
+        case "Cart confirmation checkbox":
+            return expect(CartPage.checkboxConfirm).toBeDisplayed();
+        case "Cart checkout button":
+            return expect(CartPage.checkbox).toBeDisplayed();
+        case "Back button1":
+            return expect(CheckOutPage.buttonBack1).toBeDisplayed();
+        case "Back button2":
+            return expect(CheckOutPage.buttonBack2).toBeDisplayed();
+        case "Back button3":
+            return expect(CheckOutPage.buttonBack3).toBeDisplayed();
+        case "Back button4":
+            return expect(CheckOutPage.buttonBack4).toBeDisplayed();
+        case "Checkout continue button2":
+            return expect(CheckOutPage.buttonContinue2).toBeDisplayed();
+        case "Checkout continue button3":
+            return expect(CheckOutPage.buttonContinue3).toBeDisplayed();
+        case "Checkout continue button4":
+            return expect(CheckOutPage.buttonContinue4).toBeDisplayed();
+        case "Checkout continue button5":
+            return expect(CheckOutPage.buttonContinue5).toBeDisplayed();
+        case "Checkout continue button6":
+            return expect(CheckOutPage.buttonContinue6).toBeDisplayed();
+        case "Shipping address":
+            return expect(CheckOutPage.dropdownShippingAddress).toBeDisplayed();
+        case "Checkout pickup in store checkbox":
+            return expect(CheckOutPage.checkboxPickUpInStore).toBeDisplayed();
+        case "Shipping methods":
+            return expect(CheckOutPage.radioShippingMethod).toBeDisplayed();
+        case "Payment method":
+            return expect(CheckOutPage.radioPaymentMethod).toBeDisplayed();
+        case "Paymentinfo":
+            return expect(CheckOutPage.messagePaymentInfo).toBeDisplayed();
+        case "Order data":
+            return expect(CheckOutPage.orderData).toBeDisplayed();
+        case "Billing info":
+            return expect(CheckOutPage.textBilliongInfo).toBeDisplayed();
+        case "Shipping info":
+            return expect(CheckOutPage.textShippingInfo).toBeDisplayed();
+        case "Bought products":
+            return expect(CheckOutPage.boughtProduct).toBeDisplayed();
+        case "Final payment amount":
+            return expect(CheckOutPage.valueToBePaid).toBeDisplayed();
+        case "Checkout completed title":
+            return expect(CheckOutSuccess.title).toBeDisplayed();
+        case "Checkout completed confirmation":
+            return expect(CheckOutSuccess.textConfirmation).toBeDisplayed();
+        case "Checkout completed order Number":
+            return expect(CheckOutSuccess.textOrderNumber).toBeDisplayed();
+        case "Checkout completed order details":
+            return expect(CheckOutSuccess.linkOrderDetails).toBeDisplayed();
+        case "Checkout completed continue buton":
+            return expect(CheckOutSuccess.buttonContinue).toBeDisplayed();
         default:
-            throw Error("No such visibility check");
+            throw Error("No such visibility check exist");
     }
 });
 
@@ -105,6 +211,8 @@ Then("the {string} element should have {string} sub-elements", async (element, c
             };
             const tmpElement = await $('div.block-category-navigation ul.list li ul li:nth-child(' + childNumber + 1 + ')');
             return !expect(tmpElement).toExist("no such element");
+        default:
+            throw Error("No such item type found for validate its childnode multiplicity");
     }
 });
 
@@ -112,6 +220,8 @@ Then("the {string} sub-element of {string} should be {string}", async (nthElemen
     switch (element) {
         case "Computers category":
             computerBrowsePage.childTextComparison(nthElement, text);
+        default:
+            throw Error("No such item type found for validate its sub-node value");
     }
 });
 
@@ -129,6 +239,8 @@ Then("then up to {string} {string} should be displayed", async (amount, type) =>
     switch (type) {
         case "Product items":
             ProductCommon.visibleProductAmount(amount);
+        default:
+            throw Error("No such item type found for validate how much of it are displayed");
     }
 })
 
@@ -142,13 +254,15 @@ Then("the number of {string} product on the page should be {string} {string}", a
             productAmount = CartPage.numberOfProducts();
             break;
         default:
-            throw Error("No such item type on the PAGE");
+            throw Error("No such item type found for validate its sub-node multiplicity");
     }
     switch (condition) {
         case "More than":
             return expect(productAmount).toBeGreaterThanOrEqual(parseInt(number, 10));
         case "Exactly":
             return expect(productAmount).toEqual(parseInt(number, 10));
+        //default:
+        // throw Error("No such condition found for validate the value of the compared items");
     }
 })
 
@@ -158,5 +272,27 @@ Then("the number of {string} product in the link should be {string} {string}", a
     switch (condition) {
         case "More than":
             return expect(productAmount).toBeGreaterThanOrEqual(parseInt(number, 10));
+        default:
+            throw Error("No such item type found for validate its multiplicity");
+    }
+})
+
+Then("the number of {string} should be {string}", async (element, amount) => {
+    switch (element) {
+        case "Checkout required mark":
+            return CheckOutPage.requredAmountCheck(parseInt(amount, 10));
+        case "Checkout warning message":
+            return CheckOutPage.warningAmountCheck(parseInt(amount, 10));
+        default:
+            throw Error("No such item type found on Checkputpage for validate its multiplicity");
+    }
+})
+
+Then("the {string} of {string} should be {string}", async (nth, element, value) => {
+    switch (element) {
+        case "Warning message":
+            return CheckOutPage.warningMessageTextCheck(nth, value);
+        default:
+            throw Error("No such element found for text comparison");
     }
 })
