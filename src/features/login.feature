@@ -25,8 +25,8 @@ Feature: Test automation suite for the https://demowebshop.tricentis.com website
 
     Examples:
       | n | gender | email                  | firstName  | lastName   | password   |
-      | a | Female | tesztelek9@female.test | testFemail | testFemail | testFemail |
-      | b | Male   | tesztelek9@male.test   | testMale   | testMale   | testMale   |
+      | a | Female | tesztelek10@female.test | testFemail | testFemail | testFemail |
+      | b | Male   | tesztelek10@male.test   | testMale   | testMale   | testMale   |
 
   Scenario: 2. As a logged in user I should be adble to log out
     Given I am on the "Main" page
