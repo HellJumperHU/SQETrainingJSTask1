@@ -1,12 +1,17 @@
 {
   "name": "webdriverchromeandfirefox",
   "version": "1.0.0",
-  "description": "Hello visitor",
-  "main": "mocha.js",
+  "description": "",
+  "main": "index.js",
   "scripts": {
     "test": "mocha"
   },
-  "keywords": [],
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^1.6.7",
+    "chai": "^5.1.0",
+    "mocha": "^10.3.0",
+    "mochawesome": "^7.1.3"
+  }
 }
