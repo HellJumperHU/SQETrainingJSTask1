@@ -25,8 +25,8 @@ Feature: Test automation suite for the https://demowebshop.tricentis.com website
 
     Examples:
       | n | gender | email                  | firstName  | lastName   | password   |
-      | a | Female | tesztelek10@female.test | testFemail | testFemail | testFemail |
-      | b | Male   | tesztelek10@male.test   | testMale   | testMale   | testMale   |
+      | a | Female | tesztelek11@female.test | testFemail | testFemail | testFemail |
+      | b | Male   | tesztelek11@male.test   | testMale   | testMale   | testMale   |
 
   Scenario: 2. As a logged in user I should be adble to log out
     Given I am on the "Main" page
@@ -84,18 +84,18 @@ Feature: Test automation suite for the https://demowebshop.tricentis.com website
 
     Examples:
       | n | orderType | order1                 | order2                 |
-      | 1 | abc       | A-Z                    | Z-A                    |
-      | 2 | price     | MostExpensive-Cheapest | Cheapest-MostExpensive |
+      | a | abc       | A-Z                    | Z-A                    |
+      | b | price     | MostExpensive-Cheapest | Cheapest-MostExpensive |
 
-  Scenario Outline: 6. As a User I should be able to change the number of displayed items
+  Scenario: 6. As a User I should be able to change the number of displayed items
     Given I am on the "Cloth" page
-    When I select the "1" option of the item amount dropdown
+    When I select the "1" option of the "item amount" dropdown
     Then then up to "4" "Product items" should be displayed
 
-    When I select the "2" option of the item amount dropdown
+    When I select the "2" option of the "item amount" dropdown
     Then then up to "8" "Product items" should be displayed
 
-    When I select the "3" option of the item amount dropdown
+    When I select the "3" option of the "item amount" dropdown
     Then then up to "12" "Product items" should be displayed
 
   Scenario: 7. As a user I should be able to add items to the wishlist
@@ -172,8 +172,7 @@ Feature: Test automation suite for the https://demowebshop.tricentis.com website
     And the number of "Cart" product in the link should be "Exactly" "0"
 
 
-  Scenario: 9. As a user I should be able to checkout
-
+  Scenario: 10. As a user I should be able to checkout
     Given I am on the "Cloth" page
     When I click on the "1" of "Product tile"
     Then the "Product detail" page should be displayed
