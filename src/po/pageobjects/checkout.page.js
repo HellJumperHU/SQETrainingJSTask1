@@ -138,9 +138,10 @@ class CheckOutPage extends Page {
     get valueToBePaid() {
         return $('div.total-info');
     }
-    get billingAddressDropdown(){
-    return $('div #billing-address-select')
+    get savedBillingAddressDropdown() {
+        return $('div #billing-address-select');
     }
+
     /*get() {
         return $('');
     }
@@ -229,8 +230,14 @@ class CheckOutPage extends Page {
         const subnode = $('#BillingNewAddress_CountryId option:nth-child(' + nth + ')');
         await subnode.click();
     }
-    switchToInputFieldIfNecessary(){
-        const
+    async switchToInputFieldIfNecessary() {
+        const tmpIsVisible = await this.savedBillingAddressDropdown.isDisplayed();
+        if (tmpIsVisible){
+            (await this.savedBillingAddressDropdown).click();
+            const tmp2= await $$('div #billing-address-select option');
+            await tmp2[tmp2.length-1].click();
+        }
+
     }
 }
 

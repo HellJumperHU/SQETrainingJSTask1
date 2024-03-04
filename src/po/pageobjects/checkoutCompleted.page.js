@@ -11,7 +11,7 @@ class CheckoutPage extends Page{
     get textConfirmation(){
         return $('div.checkout-data div.title strong');
     };
-    get textOrcerNumber(){
+    get textOrderNumber(){
         return $('ul.details li:nth-child(1)');
     };
     get linkOrderDetails(){

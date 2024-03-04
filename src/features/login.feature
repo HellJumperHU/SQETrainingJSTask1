@@ -155,9 +155,9 @@ Feature: The Internet Guinea Pig Website
     And the "Checkout continue button6" should be visible
 
     When I click on the "Checkout continue button6"
-    Then the "CheckoutSuccess" page should be displayed
+    Then the "CheckOutSuccess" page should be displayed
     And the "Checkout completed title" should be visible
     And the "Checkout completed confirmation" should be visible
-    And the "Checkout completed order Number" should be visible
+    And the "Checkout completed order number" should be visible
     And the "Checkout completed order details" should be visible
     And the "Checkout completed continue buton" should be visible

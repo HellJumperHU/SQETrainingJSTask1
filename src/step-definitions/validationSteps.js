@@ -3,7 +3,7 @@ const { expect, $ } = require('@wdio/globals')
 
 const LoginPage = require('../po/pageobjects/login.page');
 const CartPage = require('../po/pageobjects/cart.page');
-const CheckoutPage = require('../po/pageobjects/checkout.page');
+const CheckOutPage = require('../po/pageobjects/checkout.page');
 const ClothBrowsePage = require('../po/pageobjects/clothBrowse.page');
 const MainPage = require('../po/pageobjects/main.page');
 const RegistrationPage = require('../po/pageobjects/registration.page');
@@ -16,8 +16,7 @@ const ComputerBrowsePage = require('../po/pageobjects/computerBrowse.page');
 const ProductDetailPage = require('../po/common/productDetail.common');
 const WishlistPage = require('../po/pageobjects/wishlist.page');
 const headerCommon = require('../po/common/header.common');
-const CheckOutPage = require('../po/pageobjects/checkout.page')
-const CheckOutSuccess = require('../po/pageobjects/checkoutCompleted.page')
+const CheckOutSuccess = require('../po/pageobjects/checkoutCompleted.page');
 
 const pages = {
     Login: LoginPage,
@@ -26,7 +25,7 @@ const pages = {
     Desktop: DesktopBrowsePage,
     Wishlist: WishlistPage,
     Cart: CartPage,
-    Checkout: CheckoutPage,
+    Checkout: CheckOutPage,
     CheckOutSuccess: CheckOutSuccess
 }
 
@@ -35,6 +34,7 @@ Then("the {string} page should be displayed", async (page) => {
         case "Product detail":
             return ProductDetailPage.isCorrectProductOpened();
         default:
+            await browser.pause(1000);
             return await expect(await browser.getUrl()).toEqual(pages[page].pageURL);
     }
 });
@@ -94,6 +94,7 @@ Then("the {string} should be visible", async (element) => {
         case "Cart item update button":
             return expect(CartPage.buttonUpdate).toBeDisplayed();
         case "First name label":
+            await CheckOutPage.switchToInputFieldIfNecessary();
             return expect(CheckOutPage.labelFirstName).toBeDisplayed();
         case "Last name label":
             return expect(CheckOutPage.labelLastName).toBeDisplayed();
@@ -189,7 +190,7 @@ Then("the {string} should be visible", async (element) => {
             return expect(CheckOutSuccess.title).toBeDisplayed();
         case "Checkout completed confirmation":
             return expect(CheckOutSuccess.textConfirmation).toBeDisplayed();
-        case "Checkout completed order Number":
+        case "Checkout completed order number":
             return expect(CheckOutSuccess.textOrderNumber).toBeDisplayed();
         case "Checkout completed order details":
             return expect(CheckOutSuccess.linkOrderDetails).toBeDisplayed();
