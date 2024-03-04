@@ -1,8 +1,8 @@
 Hello visitor
 
-It is the MAIN branch of my repository
+It is the TASK3 branch of my repository
 
-It has the following branches
+Other branches
 - Task1
 - Task2
-- Task3
+- Main
