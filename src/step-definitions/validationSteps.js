@@ -7,7 +7,7 @@ const CheckOutPage = require('../po/pageobjects/checkout.page');
 const ClothBrowsePage = require('../po/pageobjects/clothBrowse.page');
 const MainPage = require('../po/pageobjects/main.page');
 const RegistrationPage = require('../po/pageobjects/registration.page');
-const RregistrationSuccessPage = require('../po/pageobjects/registrationSuccess.page');
+const RegistrationSuccessPage = require('../po/pageobjects/registrationSuccess.page');
 const HeaderElement = require('../po/common/header.common');
 const ProductCategories = require('../po/common/productCategories.common');
 const DesktopBrowsePage = require('../po/pageobjects/desktopBrowse.page');
@@ -26,7 +26,9 @@ const pages = {
     Wishlist: WishlistPage,
     Cart: CartPage,
     Checkout: CheckOutPage,
-    CheckOutSuccess: CheckOutSuccess
+    CheckOutSuccess: CheckOutSuccess,
+    Registration: RegistrationPage,
+    RegistrationSuccess: RegistrationSuccessPage
 }
 
 Then("the {string} page should be displayed", async (page) => {
@@ -34,7 +36,7 @@ Then("the {string} page should be displayed", async (page) => {
         case "Product detail":
             return ProductDetailPage.isCorrectProductOpened();
         default:
-            await browser.pause(1000);
+            await browser.pause(2000);
             return await expect(await browser.getUrl()).toEqual(pages[page].pageURL);
     }
 });
@@ -196,6 +198,37 @@ Then("the {string} should be visible", async (element) => {
             return expect(CheckOutSuccess.linkOrderDetails).toBeDisplayed();
         case "Checkout completed continue buton":
             return expect(CheckOutSuccess.buttonContinue).toBeDisplayed();
+
+        case "Female radio button":
+            return expect(RegistrationPage.radioButtonGenderFemale).toBeDisplayed();
+        case "Male radio button":
+            return expect(RegistrationPage.radioButtonGenderMale).toBeDisplayed();
+        case "Register first name label":
+            return expect(RegistrationPage.textFirstName).toBeDisplayed();
+        case "Register last name label":
+            return expect(RegistrationPage.textLastName).toBeDisplayed();
+        case "Register email label":
+            return expect(RegistrationPage.textEmail).toBeDisplayed();
+        case "Register first name input":
+            return expect(RegistrationPage.inputFirstName).toBeDisplayed();
+        case "Register last name input":
+            return expect(RegistrationPage.inputLastName).toBeDisplayed();
+        case "Register email input":
+            return expect(RegistrationPage.inputEmail).toBeDisplayed();
+        case "Registration button":
+            return expect(RegistrationPage.buttonRegister).toBeDisplayed();
+        case "Register first name input":
+            return expect(RegistrationPage.pas).toBeDisplayed();
+        case "Register password1":
+            return expect(RegistrationPage.inputPassword).toBeDisplayed();
+        case "Register password2":
+            return expect(RegistrationPage.inputConfirmPassword).toBeDisplayed();
+        case "Registration success title":
+            return expect(RegistrationSuccessPage.registrationSuccessTitle).toBeDisplayed();
+        case "Registration success text":
+            return expect(RegistrationSuccessPage.registrationSuccesText).toBeDisplayed();
+        case "Registration success continue button":
+            return expect(RegistrationSuccessPage.registrationContinueButton).toBeDisplayed();
         default:
             throw Error("No such visibility check exist");
     }
@@ -220,7 +253,8 @@ Then("the {string} element should have {string} sub-elements", async (element, c
 Then("the {string} sub-element of {string} should be {string}", async (nthElement, element, text) => {
     switch (element) {
         case "Computers category":
-            computerBrowsePage.childTextComparison(nthElement, text);
+            ComputerBrowsePage.childTextComparison(nthElement, text);
+            break;
         default:
             throw Error("No such item type found for validate its sub-node value");
     }
@@ -240,6 +274,7 @@ Then("then up to {string} {string} should be displayed", async (amount, type) =>
     switch (type) {
         case "Product items":
             ProductCommon.visibleProductAmount(amount);
+            break;
         default:
             throw Error("No such item type found for validate how much of it are displayed");
     }

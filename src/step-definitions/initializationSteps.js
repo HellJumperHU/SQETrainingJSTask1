@@ -18,7 +18,8 @@ const pages = {
     Main: MainPage,
     Desktop: DesktopBrowsePage,
     Computers: ComputerBrowsePage,
-    Cloth:ClothBrowsePage
+    Cloth:ClothBrowsePage,
+    Registration:RegistrationPage
 }
 
 Given('I am on the {string} page', async (page) => {

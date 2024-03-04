@@ -2,7 +2,7 @@ const { $ } = require('@wdio/globals')
 const Page = require('./page');
 
 class RegistrationSuccessPage extends Page{
-    get pageUrl(){
+    get pageURL(){
         return "https://demowebshop.tricentis.com/registerresult/1";
     };
     get registrationSuccessTitle(){

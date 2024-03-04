@@ -59,9 +59,15 @@ class RegistrationPage extends Page {
     get passwordSection() {
         return $('div.page-body div:nth-child(2) div strong')
     };
+    get textEmail(){
+        return $('label[for=\"Email\"]');
+    };
+    get inputEmail(){
+        return $('#Email');
+    };
     open() {
         return super.open('register');
-    }
+    };
 }
 
 module.exports = new RegistrationPage();

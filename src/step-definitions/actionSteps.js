@@ -60,7 +60,12 @@ When('I click on the {string}', async (clickedEelement) => {
             return await CheckoutPage.buttonContinue5.click()
         case "Checkout continue button6":
             return await CheckoutPage.buttonContinue6.click()
-
+        case "Female radio button":
+            return await RegistrationPage.radioButtonGenderFemale.click();
+        case "Male radio button":
+            return await RegistrationPage.radioButtonGenderMale.click();
+        case "Register button":
+            return await RegistrationPage.buttonRegister.click();
         default:
             throw Error("No such action step for click");
     };
@@ -87,6 +92,21 @@ When('I fill the {string} inputfield with {string}', async (inputField, text) =>
             break;
         case "Address 2 input":
             await CheckoutPage.InputAddr2.setValue(text);
+            break;
+        case "Register first name input":
+            await RegistrationPage.inputFirstName.setValue(text);
+            break;
+        case "Register last name input":
+            await RegistrationPage.inputLastName.setValue(text);
+            break;
+        case "Register email input":
+            await RegistrationPage.inputEmail.setValue(text);
+            break;
+        case "Register password1":
+            await RegistrationPage.inputPassword.setValue(text);
+            break;
+        case "Register password2":
+            await RegistrationPage.inputConfirmPassword.setValue(text);
             break;
         default:
             throw Error("No such inputfield found to fill with value");

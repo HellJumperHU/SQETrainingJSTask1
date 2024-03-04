@@ -1,27 +1,40 @@
-Feature: The Internet Guinea Pig Website
+Feature: Test automation suite for the https://demowebshop.tricentis.com website to make its testing easier
 
+  Scenario Outline: 1<n>. As a guest user I should be able to register as <gender>
+    Given I am on the "Registration" page
+    Then the "Female radio button" should be visible
+    And the "Male radio button" should be visible
+    And the "Register first name label" should be visible
+    And the "Register last name label" should be visible
+    And the "Register email label" should be visible
+    And the "Register first name input" should be visible
+    And the "Register last name input" should be visible
+    And the "Register email input" should be visible
 
-  ##  Scenario Outline: 1. As a user, I can log into the secure area
+    When I fill the "Register first name input" inputfield with "<firstName>"
+    And I fill the "Register last name input" inputfield with "<lastName>"
+    And I fill the "Register email input" inputfield with "<email>"
+    And I fill the "Register password1" inputfield with "<password>"
+    And I fill the "Register password2" inputfield with "<password>"
+    And I click on the "<gender> radio button"
+    And I click on the "Register button"
+    Then the "RegistrationSuccess" page should be displayed
+    And the "Registration success title" should be visible
+    And the "Registration success text" should be visible
+    And the "Registration success continue button" should be visible
 
-  ##    Given I am on the login page
-  ##    When I login with <username> and <password>
-  ##    Then I should see a flash message saying <message>
+    Examples:
+      | n | gender | email                  | firstName  | lastName   | password   |
+      | a | Female | tesztelek9@female.test | testFemail | testFemail | testFemail |
+      | b | Male   | tesztelek9@male.test   | testMale   | testMale   | testMale   |
 
-  ##   Examples:
-  ##     | username | password             | message                        |
-  ##     | tomsmith | SuperSecretPassword! | You logged into a secure area! |
-  ##     | foobar   | barfoo               | Your username is invalid!      |
+  Scenario: 2. As a logged in user I should be adble to log out
+    Given I am on the "Main" page
+    When I click on the "Logout button"
+    Then the "Main" page should be displayed
+    And the "Header login link" should be visible
 
-  Scenario: 1. As a guest user I should be able to register
-
-
-  ##Scenario: 2. As a logged in user I should be adble to log out
-  ##  Given I am on the "Main" page
-  ##  When I click on the "Logout button"
-  ##  Then the "Main" page should be displayed
-  ##  And the "Header login link" should be visible
-
-  Scenario: 1 Login
+  Scenario: 3. As a guest user I should be able to log in
     Given I am on the "Main" page
     When I click on the "Login link"
     Then the "Login" page should be displayed
@@ -43,6 +56,120 @@ Feature: The Internet Guinea Pig Website
     Then the "Main" page should be displayed
     And the "Username link" should be visible
     And the "Logout link" should be visible
+
+  Scenario: 4. The Computers groups should have the proper amount of subg-roups
+    Given I am on the "Main" page
+    When I click on the "Computers category"
+    Then the "Computers" page should be displayed
+    And the "Computers title" should be visible
+    And the "Computers list" element should have "3" sub-elements
+    And the "1" sub-element of "Computers category" should be "Desktops"
+    And the "2" sub-element of "Computers category" should be "Notebooks"
+    And the "3" sub-element of "Computers category" should be "Accessories"
+
+  @freeUpProductVariable
+  Scenario Outline: 5<n>Scenario Outline name: 5a As a user I should be able to change the sorting of the listed items based on <orderType>
+    Given I am on the "Desktop" page
+    When the sorting is changed to "<order1>"
+    And the "1" item name is saved as "0"
+    And the "6" item name is saved as "1"
+
+    When the sorting is changed to "<order2>"
+    Then the "1" item name should be "1"
+    And the "6" item name should be "0"
+
+    When the sorting is changed to "<order1>"
+    Then the "1" item name should be "0"
+    And the "6" item name should be "1"
+
+    Examples:
+      | n | orderType | order1                 | order2                 |
+      | 1 | abc       | A-Z                    | Z-A                    |
+      | 2 | price     | MostExpensive-Cheapest | Cheapest-MostExpensive |
+
+  Scenario Outline: 6. As a User I should be able to change the number of displayed items
+    Given I am on the "Cloth" page
+    When I select the "1" option of the item amount dropdown
+    Then then up to "4" "Product items" should be displayed
+
+    When I select the "2" option of the item amount dropdown
+    Then then up to "8" "Product items" should be displayed
+
+    When I select the "3" option of the item amount dropdown
+    Then then up to "12" "Product items" should be displayed
+
+  Scenario: 7. As a user I should be able to add items to the wishlist
+    Given I am on the "Cloth" page
+    When I click on the "1" of "Product tile"
+    Then the "Product detail" page should be displayed
+    And the "Product container" should be visible
+    And the "Product Image" should be visible
+    And the "Product overview container" should be visible
+    And the "Product name" should be visible
+    And the "Product stock" should be visible
+    And the "Product attributes" should be visible
+    And the "Product price" should be visible
+    And the "Add to cart button" should be visible
+    And the "Wishlist button" should be visible
+
+    When I click on the "Wishlist button"
+    Then the number of "Wishlisted" product in the link should be "More than" "0"
+
+    When I click on the "Wishlist link"
+    Then the "Wishlist" page should be displayed
+    And the number of "Wishlisted" product on the page should be "More than" "0"
+    And the number of "Wishlisted" product in the link should be "More than" "0"
+
+  Scenario: 8. As a user I should be able to add items to the cart
+    Given I am on the "Cloth" page
+    When I click on the "1" of "Product tile"
+    Then the "Product detail" page should be displayed
+    And the "Product container" should be visible
+    And the "Product Image" should be visible
+    And the "Product overview container" should be visible
+    And the "Product name" should be visible
+    And the "Product stock" should be visible
+    And the "Product attributes" should be visible
+    And the "Product price" should be visible
+    And the "Add to cart button" should be visible
+    And the "Wishlist button" should be visible
+
+    When I click on the "Add to cart button"
+    Then the number of "Cart" product in the link should be "More than" "0"
+
+    When I click on the "Cart link"
+    Then the "Cart" page should be displayed
+    And the number of "Cart" product on the page should be "More than" "0"
+    And the number of "Cart" product in the link should be "More than" "0"
+
+  Scenario: 9. As a user I should be able to remove items from the cart
+    Given I am on the "Cloth" page
+    When I click on the "1" of "Product tile"
+    Then the "Product detail" page should be displayed
+    And the "Product container" should be visible
+    And the "Product Image" should be visible
+    And the "Product overview container" should be visible
+    And the "Product name" should be visible
+    And the "Product stock" should be visible
+    And the "Product attributes" should be visible
+    And the "Product price" should be visible
+    And the "Add to cart button" should be visible
+    And the "Wishlist button" should be visible
+
+    When I click on the "Add to cart button"
+    Then the number of "Cart" product in the link should be "More than" "0"
+
+    When I click on the "Cart link"
+    Then the "Cart" page should be displayed
+    And the number of "Cart" product on the page should be "More than" "0"
+    And the number of "Cart" product in the link should be "More than" "0"
+    And the "Cart item checkbox" should be visible
+    And the "Cart item update button" should be visible
+
+    When I click on the "Cart item checkbox"
+    And I click on the "Cart item update button"
+    Then the number of "Cart" product on the page should be "Exactly" "0"
+    And the number of "Cart" product in the link should be "Exactly" "0"
 
 
   Scenario: 9. As a user I should be able to checkout
