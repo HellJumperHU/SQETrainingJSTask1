@@ -1,0 +1,44 @@
+{
+    "Scenarios": {
+        "Tutorial": {
+            "title": "foo",
+            "body": "bar",
+            "userId": 1
+        },
+        "1st": {
+            "id": 0,
+            "username": "TestUserName",
+            "firstName": "TestFirstName",
+            "lastName": "TestLastName",
+            "email": "test@test.test",
+            "password": "testpassword",
+            "phone": "123456789",
+            "userStatus": 0
+        },
+        "2nd": {
+            "1": {
+                "username": "TestUserName",
+                "password": "testpassword"
+            },
+            "2": {
+                "username": "string",
+                "password": "string"
+            }
+        },
+        "3rd": [
+            {
+                "username": "TestUserName",
+                "password": "testpassword"
+            },
+            {
+                "username": "string",
+                "password": "string"
+            }
+        ],
+        "4th": {},
+        "5th": {},
+        "6th": {},
+        "7th": {},
+        "8th": {}
+    }
+}
