@@ -2,7 +2,7 @@ const axios = require("axios");
 const {TEST_URL}=require("../config/endpoints")
 
 const sendRequest = async (url, data = null, method = "get") => {
-    console.log(`${TEST_URL}/${url}`+"<<<< Test URL");
+    //console.log(`${TEST_URL}/${url}`+"<<<< Test URL");
     try {
         const response = await axios({
             method,

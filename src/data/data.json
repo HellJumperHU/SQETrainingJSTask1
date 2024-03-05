@@ -35,10 +35,38 @@
                 "password": "string"
             }
         ],
-        "4th": {},
-        "5th": {},
-        "6th": {},
-        "7th": {},
+        "5th": {
+            "pet": {
+                "id": 555555555,
+                "category": {
+                    "id": 0,
+                    "name": "Shiba Inu"
+                },
+                "name": "dogecoin",
+                "photoUrls": [
+                    "string"
+                ],
+                "tags": [
+                    {
+                        "id": 0,
+                        "name": "much doge"
+                    }
+                ],
+                "status": "sold"
+            }
+        },
+        "6th": {
+            "IDs": [
+                555555555,
+                44444444
+            ]
+        },
+        "7th": {
+            "IDs": [
+                555555555,
+                44444444
+            ]
+        },
         "8th": {}
     }
 }
